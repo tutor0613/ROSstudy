@@ -1,7 +1,7 @@
 #include "ros/ros.h"
 #include "study_ros/addTwoInts.h"
 
-bool calc(study_ros::addTwoInts::Request &req, study_ros::addTwoInts::Response &res) {
+bool calc(study_ros::addTwoInts::Request &req, study_ros::addTwoInts::Response &res) {  // Service callback
     res.result = req.a + req.b;
     ROS_INFO("[BasicSrvServer] Request : %ld + %ld, Response : %ld", req.a, req.b, res.result);
     return true;

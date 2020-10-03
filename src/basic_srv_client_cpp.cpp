@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
         ROS_INFO("[BasicSrvClient] Request : %ld + %ld, Response : %ld", srv.request.a, srv.request.b, srv.response.result);
     }
     else {
-        ROS_ERROR("[BasicSrvClient] Failed to call service. ");
+        ROS_ERROR("[BasicSrvClient] Service call failed. ");
         return 1;
     }
 

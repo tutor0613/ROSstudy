@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     ros::NodeHandle nh;
 
     ros::Subscriber basic_sub = nh.subscribe("test_msg", 1, basicCallback);
-    ros::spin();
+    ros::spin();   // keeps code from exiting until ROS is shutdown.
 
     return 0;
 }
