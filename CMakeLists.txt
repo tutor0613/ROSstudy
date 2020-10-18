@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  actionlib
+  actionlib_msgs
   message_generation
 )
 
@@ -61,16 +63,16 @@ add_service_files(
 )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  FILES
+  fibonacci.action
+)
 
 # Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
   std_msgs
+  actionlib_msgs
 )
 
 ################################################
@@ -105,7 +107,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES study_ros
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib_msgs
   #DEPENDS system_lib
 )
 
@@ -115,9 +117,9 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
+include_directories(include
   ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -137,6 +139,7 @@ add_executable(basic_pub_cpp src/basic_pub_cpp.cpp)
 add_executable(basic_sub_cpp src/basic_sub_cpp.cpp)
 add_executable(basic_srv_server_cpp src/basic_srv_server_cpp.cpp)
 add_executable(basic_srv_client_cpp src/basic_srv_client_cpp.cpp)
+add_executable(basic_act_server_cpp src/basic_act_server_cpp.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,6 +156,7 @@ target_link_libraries(basic_pub_cpp ${catkin_LIBRARIES})
 target_link_libraries(basic_sub_cpp ${catkin_LIBRARIES})
 target_link_libraries(basic_srv_server_cpp ${catkin_LIBRARIES})
 target_link_libraries(basic_srv_client_cpp ${catkin_LIBRARIES})
+target_link_libraries(basic_act_server_cpp ${catkin_LIBRARIES})
 
 #############
 ## Install ##
