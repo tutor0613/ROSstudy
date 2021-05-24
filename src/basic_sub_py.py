@@ -9,6 +9,7 @@ def basicCallback(msg):
 def main_sub():
     rospy.init_node('basic_subscriber', anonymous=False)
     basic_sub = rospy.Subscriber('test_msg', Int64, basicCallback)
+    rospy.logwarn("[BasicSubscriber] START! ")
     rospy.spin()
 
 if __name__ == '__main__':

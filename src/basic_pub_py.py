@@ -7,7 +7,8 @@ def main_pub():
     rospy.init_node('basic_publisher', anonymous=False)
     basic_pub = rospy.Publisher('test_msg', Int64, queue_size=1)
     msg = Int64(); count = 0
-    r = rospy.Rate(1)
+    r = rospy.Rate(1000)
+    rospy.sleep(1)
 
     while not rospy.is_shutdown():
         msg.data = count; count += 1
